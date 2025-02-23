@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheduler Product Architecture</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .layer {
+      border: 2px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px;
+      width: 80%;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .layer h2 {
+      margin: 0 0 10px;
+      color: #333;
+    }
+    .components {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .component {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 5px;
+      background-color: #e0e0e0;
+      width: 150px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .component:hover {
+      background-color: #d0d0d0;
+      transform: scale(1.05);
+    }
+    .arrow {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    .modal-content {
+      text-align: left;
+    }
+    .close-modal {
+      float: right;
+      cursor: pointer;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- UI Layer -->
+    <div class="layer">
+      <h2>UI Layer</h2>
+      <div class="components">
+        <div class="component" onclick="showModal('Web Application', 'Responsive web interface built with React.js or Angular.')">Web Application</div>
+        <div class="component" onclick="showModal('Mobile Application', 'Cross-platform mobile app built with React Native or Flutter.')">Mobile Application</div>
+        <div class="component" onclick="showModal('Desktop Application', 'Desktop app built with Electron.js for Windows, macOS, and Linux.')">Desktop Application</div>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow">↓</div>
+
+    <!-- Application Layer -->
+    <div class="layer">
+      <h2>Application Layer</h2>
+      <div class="components">
+        <div class="component" onclick="showModal('API Gateway', 'Entry point for all client requests. Routes requests to appropriate microservices.')">API Gateway</div>
+        <div class="component" onclick="showModal('Authentication', 'Handles user authentication using OAuth2 or JWT.')">Authentication</div>
+        <div class="component" onclick="showModal('Scheduler Engine', 'Core logic for task scheduling, prioritization, and conflict resolution.')">Scheduler Engine</div>
+        <div class="component" onclick="showModal('Notification Service', 'Sends real-time notifications via email, push, or in-app.')">Notification Service</div>
+        <div class="component" onclick="showModal('Calendar Integration', 'Integrates with external calendars like Google Calendar and Outlook.')">Calendar Integration</div>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow">↓</div>
+
+    <!-- Service Layer -->
+    <div class="layer">
+      <h2>Service Layer</h2>
+      <div class="components">
+        <div class="component" onclick="showModal('Database', 'Stores user data, tasks, and schedules. Uses PostgreSQL or MySQL.')">Database</div>
+        <div class="component" onclick="showModal('Cache (Redis)', 'Improves performance by caching frequently accessed data.')">Cache (Redis)</div>
+        <div class="component" onclick="showModal('Message Queue', 'Handles asynchronous tasks using RabbitMQ or Kafka.')">Message Queue</div>
+        <div class="component" onclick="showModal('File Storage', 'Stores user-uploaded files using AWS S3 or Google Cloud Storage.')">File Storage</div>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow">↓</div>
+
+    <!-- Data Layer -->
+    <div class="layer">
+      <h2>Data Layer</h2>
+      <div class="components">
+        <div class="component" onclick="showModal('AI/ML Models', 'Powers smart scheduling algorithms for task prioritization and conflict resolution.')">AI/ML Models</div>
+        <div class="component" onclick="showModal('Analytics Engine', 'Tracks user behavior and system performance using Elasticsearch and Kibana.')">Analytics Engine</div>
+        <div class="component" onclick="showModal('Logging & Monitoring', 'Monitors system health and errors using Prometheus and Grafana.')">Logging & Monitoring</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="modal" id="modal">
+    <div class="close-modal" onclick="closeModal()">×</div>
+    <div class="modal-content">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for Modal
+    function showModal(title, description) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDescription').innerText = description;
+      document.getElementById('modal').style.display = 'block';
+      document.getElementById('modalOverlay').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+      document.getElementById('modalOverlay').style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('modalOverlay').addEventListener('click', closeModal);
+  </script>
+</body>
+</html>

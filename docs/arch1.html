@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheduler Product Architecture</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .layer {
+      border: 2px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px;
+      width: 80%;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .layer h2 {
+      margin: 0 0 10px;
+      color: #333;
+    }
+    .components {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .component {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 5px;
+      background-color: #e0e0e0;
+      width: 150px;
+    }
+    .arrow {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- UI Layer -->
+    <div class="layer">
+      <h2>UI Layer</h2>
+      <div class="components">
+        <div class="component">Web Application</div>
+        <div class="component">Mobile Application</div>
+        <div class="component">Desktop Application</div>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow">↓</div>
+
+    <!-- Application Layer -->
+    <div class="layer">
+      <h2>Application Layer</h2>
+      <div class="components">
+        <div class="component">API Gateway</div>
+        <div class="component">Authentication</div>
+        <div class="component">Scheduler Engine</div>
+        <div class="component">Notification Service</div>
+        <div class="component">Calendar Integration</div>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow">↓</div>
+
+    <!-- Service Layer -->
+    <div class="layer">
+      <h2>Service Layer</h2>
+      <div class="components">
+        <div class="component">Database</div>
+        <div class="component">Cache (Redis)</div>
+        <div class="component">Message Queue</div>
+        <div class="component">File Storage</div>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow">↓</div>
+
+    <!-- Data Layer -->
+    <div class="layer">
+      <h2>Data Layer</h2>
+      <div class="components">
+        <div class="component">AI/ML Models</div>
+        <div class="component">Analytics Engine</div>
+        <div class="component">Logging & Monitoring</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
